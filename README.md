@@ -4,6 +4,10 @@
 
 ## 简体中文
 
+### 项目背景
+
+全球制裁与出口管制持续影响跨境贸易、投资和供应链合规，但中国发布的反制措施、出口管制和不可靠实体等信息长期缺少统一、可检索、便于程序调用的公开接口。本项目由 RiskAtlas 全球制裁与出口管制数据平台发起，提供一个与平台 API v1 保持一致的开源调用入口，帮助研究者和开发者快速接入中国措施数据；如需多法域覆盖、实体模糊匹配、历史状态、行业标签、持续监控和机构级 API 服务，请访问 [RiskAtlas 平台](https://atlas.scholarforce.ai/)。
+
 面向研究者、开发者与合规团队的中国措施 API 开源调用包。数据以中国政府官方公开文件为事实依据，但完整数据不随本仓库发布，仅通过 RiskAtlas 受控 API 提供。
 
 本仓库只发布接口规范、参考代理、校验工具和文档，不包含完整中国措施数据、RiskAtlas 的其他法域数据、生产数据库、客户数据、访问密钥或内部运行配置。
@@ -42,6 +46,10 @@ curl 'http://127.0.0.1:8787/api/v1/china-measures?locale=zh'
 - 原始官方文件可能具有其自身的使用条款；请同时遵守发布机关网站的适用规则。
 
 ## English
+
+### Project background
+
+Sanctions and export controls increasingly affect cross-border trade, investment and supply-chain compliance, while China-issued countermeasures and trade-control information has lacked a consistent, searchable and developer-friendly interface. This project is initiated by the RiskAtlas global sanctions and export-control data platform as an open integration entry point compatible with RiskAtlas API v1. For multi-jurisdiction coverage, entity matching, historical status, industry labels, monitoring and institutional API access, visit the [RiskAtlas platform](https://atlas.scholarforce.ai/).
 
 An open API kit for China-issued measures. The complete dataset is not committed to GitHub; authorized clients retrieve it from the controlled RiskAtlas API.
 

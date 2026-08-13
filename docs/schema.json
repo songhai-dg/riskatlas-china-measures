@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RiskAtlas China Measures v1",
+  "type": "object",
+  "required": ["apiVersion", "datasetVersion", "generatedAt", "summary", "methodology", "languageCoverage", "sources", "events", "releaseHash"],
+  "properties": {
+    "apiVersion": { "const": "v1" },
+    "datasetVersion": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "license": { "type": "string" },
+    "attribution": { "type": "string" },
+    "summary": { "type": "object" },
+    "methodology": { "type": "object" },
+    "languageCoverage": {
+      "type": "object",
+      "required": ["canonicalLanguage", "supportedLocales", "englishCompleteEvents", "totalEvents"],
+      "properties": {
+        "canonicalLanguage": { "const": "zh" },
+        "supportedLocales": { "type": "array", "items": { "enum": ["zh", "en"] } },
+        "englishCompleteEvents": { "type": "integer", "minimum": 0 },
+        "totalEvents": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "sources": { "type": "array", "items": { "type": "object" } },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "noticeNo", "regime", "sourceList", "authority", "status", "subjects", "translations"],
+        "properties": {
+          "id": { "type": "string" },
+          "noticeNo": { "type": "string" },
+          "title": { "type": ["string", "null"] },
+          "officialDate": { "type": ["string", "null"] },
+          "officialUrl": { "type": ["string", "null"] },
+          "regime": { "type": "string" },
+          "sourceList": { "type": "string" },
+          "authority": { "type": "string" },
+          "status": { "type": "string" },
+          "subjects": { "type": "array" },
+          "translations": {
+            "type": "object",
+            "required": ["zh", "en"],
+            "properties": {
+              "zh": { "$ref": "#/$defs/translation" },
+              "en": { "$ref": "#/$defs/translation" }
+            }
+          }
+        }
+      }
+    },
+    "releaseHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "translation": {
+      "type": "object",
+      "required": ["isComplete"],
+      "properties": { "isComplete": { "type": "boolean" } }
+    }
+  }
+}

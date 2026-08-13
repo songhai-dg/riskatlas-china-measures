@@ -1,0 +1,12 @@
+{
+  "name": "riskatlas-china-measures",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Open multilingual API client and reference proxy for controlled China-issued measures data.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-release.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

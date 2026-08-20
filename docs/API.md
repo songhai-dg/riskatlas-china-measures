@@ -1,9 +1,9 @@
 # API v1
 
-Reference endpoint (the local proxy forwards to the controlled RiskAtlas service):
+Open public endpoint (no API key required):
 
 ```text
-GET /api/v1/china-measures
+GET https://atlas.scholarforce.ai/api/open/v1/china-measures
 ```
 
 Supported query parameters:
@@ -14,12 +14,14 @@ Supported query parameters:
 | `regime` | published regime code | Filters the measure regime. |
 | `status` | `in_force`, `suspended`, `stopped`, `mixed`, `unknown` | Filters event status. |
 | `locale` | `zh`, `en` | Additive language preference metadata. The complete bilingual event structure remains available. |
+| `page` | `1`–`200` | Page number; defaults to `1`. |
+| `limit` | `1`–`25` | Page size; defaults to `20`. |
 
 Examples:
 
 ```bash
-curl 'http://127.0.0.1:8787/api/v1/china-measures?regime=export_control&locale=en'
-curl 'http://127.0.0.1:8787/api/v1/china-measures?status=in_force&q=DNA'
+curl 'https://atlas.scholarforce.ai/api/open/v1/china-measures?regime=export_control&page=1&limit=20'
+curl 'https://atlas.scholarforce.ai/api/open/v1/china-measures?status=in_force&q=DNA'
 ```
 
 Envelope:
@@ -32,6 +34,6 @@ Envelope:
 }
 ```
 
-The repository does not contain a data snapshot. Without `RISKATLAS_API_URL`, the reference proxy returns `503 UPSTREAM_NOT_CONFIGURED`. Production access should use an API key issued by RiskAtlas; do not put the key in source code, browser bundles or public issues.
+The repository does not contain a data snapshot. The public endpoint does not require an API key; it uses server-side IP rate limiting and pagination. It is not a bulk-download endpoint. Multi-jurisdiction, monitoring and institutional integrations remain separate RiskAtlas services.
 
 This is intentionally compatible with the RiskAtlas v1 China Measures endpoint. Future application-based endpoints may extend to multi-jurisdiction data while retaining v1 envelope conventions.

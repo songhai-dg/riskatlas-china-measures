@@ -20,7 +20,7 @@ RISKATLAS_API_URL='https://atlas.scholarforce.ai' npm run serve
 curl 'http://127.0.0.1:8787/api/v1/china-measures?locale=zh'
 ```
 
-接口与 RiskAtlas `v1` 中国措施端点保持兼容，并支持 `locale=zh|en`。生产调用须使用申请的 API Key；参考代理默认限流每个来源地址每分钟 60 次，可通过环境变量调整。
+直接调用地址为 `https://atlas.scholarforce.ai/api/open/v1/china-measures`，无需 API Key。开放接口按 IP 限流、分页返回，适合开发与研究；不提供批量导出或其他法域数据。参考代理默认限流每个来源地址每分钟 60 次，可通过环境变量调整。
 
 ### 数据边界
 
@@ -38,7 +38,7 @@ curl 'http://127.0.0.1:8787/api/v1/china-measures?locale=zh'
 
 - 平台：[RiskAtlas 全球制裁与出口管制数据平台](https://atlas.scholarforce.ai/)
 - 支持机构：[中央财经大学国家财经战略研究院](https://nafes.cufe.edu.cn/)
-- API 申请、机构合作与学术使用说明：请通过平台页面联系。
+- 多法域、监控、批量筛查和机构级 API：请通过平台页面联系。
 
 ### 许可与署名
 
@@ -51,7 +51,7 @@ curl 'http://127.0.0.1:8787/api/v1/china-measures?locale=zh'
 
 Sanctions and export controls increasingly affect cross-border trade, investment and supply-chain compliance, while China-issued countermeasures and trade-control information has lacked a consistent, searchable and developer-friendly interface. This project is initiated by the RiskAtlas global sanctions and export-control data platform as an open integration entry point compatible with RiskAtlas API v1. For multi-jurisdiction coverage, entity matching, historical status, industry labels, monitoring and institutional API access, visit the [RiskAtlas platform](https://atlas.scholarforce.ai/).
 
-An open API kit for China-issued measures. The complete dataset is not committed to GitHub; authorized clients retrieve it from the controlled RiskAtlas API.
+An open API kit for China-issued measures. The complete dataset is not committed to GitHub; developers can directly call the rate-limited public endpoint.
 
 The repository contains interface code, validation tools and documentation only. It does not include the complete dataset, production databases, customer data, credentials or internal runtime configuration.
 
@@ -64,6 +64,8 @@ curl 'http://127.0.0.1:8787/api/v1/china-measures?locale=en'
 ```
 
 Chinese official text remains authoritative. English fields are structured translations and must be read with the event-level `isComplete` indicator. The dataset does not provide legal advice.
+
+Direct endpoint: `https://atlas.scholarforce.ai/api/open/v1/china-measures`. No API key is required. The endpoint is IP rate-limited and paginated for development and research; it does not provide bulk export or multi-jurisdiction data.
 
 Platform: [RiskAtlas](https://atlas.scholarforce.ai/). Supporting institution: [National Academy of Financial and Economic Strategy, Central University of Finance and Economics](https://nafes.cufe.edu.cn/).
 

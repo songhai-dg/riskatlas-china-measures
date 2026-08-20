@@ -2,8 +2,7 @@
 import { createServer } from 'node:http'
 
 const port = Number(process.env.PORT || 8787)
-const upstream = process.env.RISKATLAS_API_URL
-const apiKey = process.env.RISKATLAS_API_KEY
+const upstream = process.env.RISKATLAS_API_URL || 'https://atlas.scholarforce.ai'
 const maxPerMinute = Number(process.env.RATE_LIMIT_PER_MINUTE || 60)
 const requests = new Map()
 
@@ -24,11 +23,9 @@ createServer((req, res) => {
   recent.push(now)
   requests.set(ip, recent)
 
-  const target = new URL('/api/v1/china-measures', upstream)
+  const target = new URL('/api/open/v1/china-measures', upstream)
   for (const [key, value] of url.searchParams) target.searchParams.append(key, value)
-  const headers = { Accept: 'application/json' }
-  if (apiKey) headers.Authorization = `Bearer ${apiKey}`
-  fetch(target, { headers }).then(async response => {
+  fetch(target, { headers: { Accept: 'application/json' } }).then(async response => {
     const body = await response.text()
     res.writeHead(response.status, { 'Content-Type': response.headers.get('content-type') || 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })
     res.end(body)

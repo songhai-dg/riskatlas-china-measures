@@ -33,10 +33,25 @@
           "title": { "type": ["string", "null"] },
           "officialDate": { "type": ["string", "null"] },
           "officialUrl": { "type": ["string", "null"] },
-          "regime": { "type": "string" },
+          "regime": {
+            "type": "string",
+            "enum": [
+              "export_control",
+              "export_control_watch_list",
+              "unreliable_entity_list",
+              "mofcom_countermeasures",
+              "foreign_ministry_countermeasures",
+              "destination_export_control",
+              "trade_security_investigation",
+              "certification_control"
+            ]
+          },
           "sourceList": { "type": "string" },
           "authority": { "type": "string" },
-          "status": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["in_force", "investigation_open", "suspended", "stopped", "mixed", "unknown"]
+          },
           "subjects": { "type": "array" },
           "translations": {
             "type": "object",

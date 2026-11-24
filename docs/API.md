@@ -10,9 +10,9 @@ Supported query parameters:
 
 | Parameter | Values | Meaning |
 |---|---|---|
-| `q` | text | Matches official and translation fields, subject names and aliases. |
-| `regime` | published regime code | Filters the measure regime. |
-| `status` | `in_force`, `suspended`, `stopped`, `mixed`, `unknown` | Filters event status. |
+| `q` | text (`>= 2` chars) | Matches official and translation fields, subject names and aliases. |
+| `regime` | `export_control`, `export_control_watch_list`, `unreliable_entity_list`, `mofcom_countermeasures`, `foreign_ministry_countermeasures`, `destination_export_control`, `trade_security_investigation`, `certification_control` | Filters the measure regime. |
+| `status` | `in_force`, `investigation_open`, `suspended`, `stopped`, `mixed`, `unknown` | Filters event status. |
 | `locale` | `zh`, `en` | Additive language preference metadata. The complete bilingual event structure remains available. |
 | `page` | `1`–`200` | Page number; defaults to `1`. |
 | `limit` | `1`–`25` | Page size; defaults to `20`. |
@@ -29,7 +29,8 @@ Envelope:
 ```json
 {
   "data": { "events": [], "filters": {}, "matchedEvents": 0 },
-  "meta": { "apiVersion": "v1", "recordGrain": "official_notice_event" },
+  "meta": { "apiVersion": "v1", "contractVersion": "1.13.0", "recordGrain": "official_notice_event" },
+  "pagination": { "page": 1, "limit": 20, "total": 0, "totalPages": 0 },
   "warnings": []
 }
 ```

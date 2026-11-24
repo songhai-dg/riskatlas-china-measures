@@ -26,6 +26,7 @@ const REGIME_LABELS = {
 
 const STATUS_LABELS = {
   in_force: { zh: '现行有效', en: 'In force' },
+  investigation_open: { zh: '调查进行中', en: 'Investigation open' },
   suspended: { zh: '已暂停', en: 'Suspended' },
   stopped: { zh: '已停止', en: 'Stopped' },
   mixed: { zh: '状态混合', en: 'Mixed status' },
